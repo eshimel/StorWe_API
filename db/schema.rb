@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109030052) do
+ActiveRecord::Schema.define(version: 20151109171037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clues", force: :cascade do |t|
+    t.text     "clue"
+    t.integer  "outline_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "count_column"
+  end
+
+  add_index "clues", ["outline_id"], name: "index_clues_on_outline_id", using: :btree
+  add_index "clues", ["user_id"], name: "index_clues_on_user_id", using: :btree
+
+  create_table "contributions", force: :cascade do |t|
+    t.text     "submission"
+    t.integer  "outline_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "count_column"
+  end
+
+  add_index "contributions", ["outline_id"], name: "index_contributions_on_outline_id", using: :btree
+  add_index "contributions", ["user_id"], name: "index_contributions_on_user_id", using: :btree
 
   create_table "outlines", force: :cascade do |t|
     t.string   "subjects"
@@ -47,6 +71,10 @@ ActiveRecord::Schema.define(version: 20151109030052) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
+  add_foreign_key "clues", "outlines"
+  add_foreign_key "clues", "users"
+  add_foreign_key "contributions", "outlines"
+  add_foreign_key "contributions", "users"
   add_foreign_key "stories", "outlines"
   add_foreign_key "stories", "users"
 end
