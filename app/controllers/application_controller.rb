@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::BASE
     # Defaults for API requests
   before_action :api_request_settings
   def api_request_settings
