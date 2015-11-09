@@ -25,13 +25,16 @@ ActiveRecord::Schema.define(version: 20151109030052) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string   "contribution"
-    t.string   "clues"
+    t.text     "contribution"
+    t.text     "clues"
     t.integer  "user_id"
     t.integer  "outline_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "stories", ["outline_id"], name: "index_stories_on_outline_id", using: :btree
+  add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -44,4 +47,6 @@ ActiveRecord::Schema.define(version: 20151109030052) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
+  add_foreign_key "stories", "outlines"
+  add_foreign_key "stories", "users"
 end
