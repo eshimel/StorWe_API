@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   post '/login' => 'auth#login'
   delete '/logout/:id' => 'auth#logout'
 
+  #resources for users
   resources :users, except: [:new, :edit]
 
+  #resource for outlines
   resources :outlines, only: [:new, :edit, :create, :show]
 
-
+  #resources for stories
   resources :stories, only:[:index, :show, :create]
 end
   # The priority is based upon order of creation: first created -> highest priority.
