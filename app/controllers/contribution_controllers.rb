@@ -1,5 +1,9 @@
+#users make a contribution and submit it
+  #this reveals the current updates on the current story
+  #stories are made up of ten contributions
 class ContributionController < UserController
-  before_action :se contribution, only: [:update, :destroy]
+
+  before_action :use contribution, only: [:update, :destroy]
 
   # GET contribution
   def index

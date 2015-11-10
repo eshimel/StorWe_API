@@ -1,6 +1,8 @@
-#
+# Outlines are provided from the database upon login
+#Outlines change when new stories change
+#Outlines change every ten contributions
 class OutlinesController < ApplicationController
-  before_action :setoutline, only: [:update, :destroy]
+  before_action :set_outline, only: [:update, :destroy]
 
   # GET outlines
   def index

@@ -1,5 +1,8 @@
+#Users receive clues from the previous user.
+  #Users submit clues for the next user.
+
 class CluesController < UsersController
-  before_action :use clue, only: [:update, :destroy]
+  before_action :set clue, only: [:update, :destroy]
 
   # GET clue
   def index

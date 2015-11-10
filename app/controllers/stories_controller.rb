@@ -1,4 +1,6 @@
-#
+# the previous story is set on the login/registration page
+# stories are compiled every ten contributions
+# the story in progress is visible after a contribution is submitted
 class StoriesController < ContributionsController
   before_action :set_story, only: [:update, :destroy]
 
