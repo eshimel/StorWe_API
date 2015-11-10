@@ -34,11 +34,11 @@ module StorWeAppApi
       # Cross-Origin Resource Sharing
     config.middleware.use Rack::Cors do
       allow do
-        origins '*'
+       origins '*'
         resource '*',
-                 headers: :any,
-                 methods: [:options, :get,
-                           :post, :patch, :delete]
+                headers: :any,
+                methods: [:options, :get,
+                          :post, :patch, :delete]
         end
     end
   end

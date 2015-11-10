@@ -16,3 +16,6 @@ class OpenReadController < ApplicationController
 
   private :set_current_user
 end
+
+
+
