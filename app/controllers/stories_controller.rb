@@ -18,7 +18,7 @@ class StoriesController < ContributionsController
 
   # POST /storys
   def create
-    @story = current_user.stories.new(story_params) #makes this, this user's story.
+    @story = current_outline.stories.new(story_params) #makes this, this user's story.
 
     if @stories.save
       render json: @story, status: :created, location: @story
@@ -44,7 +44,7 @@ class StoriesController < ContributionsController
   end
 
   def set_story
-    @story = current_user.stories.find(params[:id])
+    @story = current_outline.stories.find(params[:id])
   end
 
   def story_params
