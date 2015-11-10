@@ -4,7 +4,7 @@ class OutlinesController < ApplicationController
 
   # GET outlines
   def index
-    outlines = outline.all
+    outlines = Outline.all
 
     render json: outlines
   end

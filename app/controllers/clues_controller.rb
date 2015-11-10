@@ -3,7 +3,7 @@ class CluesController < UsersController
 
   # GET clue
   def index
-    clue = clue.all
+    clue = Clue.all
 
     render json: clue
   end

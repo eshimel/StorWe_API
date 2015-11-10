@@ -1,9 +1,9 @@
-class ContributionController < ApplicationController
+class ContributionController < UserController
   before_action :se contribution, only: [:update, :destroy]
 
   # GET contribution
   def index
-    contribution = contribution.all
+    contribution = Contribution.all
 
     render json: contribution
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-   post '/register' => 'auth#register'
+  post '/register' => 'auth#register'
   # patch '/confirm' => 'auth#confirm'
-  post '/login' => 'auth#login'
+  patch '/login' => 'auth#login'
   delete '/logout/:id' => 'auth#logout'
 
   #resources for users

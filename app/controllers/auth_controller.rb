@@ -7,7 +7,9 @@ class AuthController < ApplicationController
   def login
     @user = User.authenticate credentials[:email], credentials[:password]
     if @user
-      render json: @user, serializer: LoginUserSerializer, root: 'user'
+      # TEMPORARY - make a serializer here.
+      render json: @user, root: 'user'
+      #render json: @user, serializer: LoginUserSerializer, root: 'user'
     else
       head :unauthorized
     end

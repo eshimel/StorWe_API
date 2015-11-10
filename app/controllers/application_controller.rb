@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::BASE
-    # Defaults for API requests
+#
+class ApplicationController < ActionController::Base
+  # Defaults for API requests
   before_action :api_request_settings
   def api_request_settings
     request.format = :json
@@ -35,6 +36,5 @@ class ApplicationController < ActionController::BASE
   private :authenticate, :current_user, :record_not_found
   private :ssl_configured?, :api_request_settings
 end
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
 
