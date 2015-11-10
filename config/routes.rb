@@ -8,10 +8,16 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :edit]
 
   #resource for outlines
-  resources :outlines, only: [:new, :edit, :create, :show]
+  resources :outlines, except: [:new, :edit, :create, :show]
 
   #resources for stories
-  resources :stories, only:[:index, :show, :create]
+  resources :stories, except:[:new, :index, :show, :create]
+
+  #resrouces for clues
+  resources :clues, except:[:new, :index, :show, :create]
+
+  #resources for contributions
+  resources :contribution, except:[:new, :index, :show, :create]
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
