@@ -1784,3 +1784,59 @@ Processing by OutlinesController#index as */*
   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "05e568d183f2788d3041f72c9d3a7b5c"]]
   [1m[36mOutline Load (1.2ms)[0m  [1mSELECT "outlines".* FROM "outlines"[0m
 Completed 200 OK in 42ms (Views: 30.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users" for ::1 at 2015-11-11 11:22:58 -0500
+Processing by UsersController#index as HTML
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/register" for ::1 at 2015-11-11 14:55:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#register as */*
+Completed 400 Bad Request in 18ms (ActiveRecord: 0.0ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: credentials):
+  app/controllers/auth_controller.rb:41:in `credentials'
+  app/controllers/auth_controller.rb:20:in `register'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (59.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (140.8ms)
+
+
+Started POST "/register" for ::1 at 2015-11-11 14:57:13 -0500
+Processing by AuthController#register as */*
+  Parameters: {"credentials"=>{"email"=>"me@you.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@you.com", "password"=>"[FILTERED]"}}}
+  [1m[35m (1.5ms)[0m  BEGIN
+  [1m[36mUser Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'me@you.com' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "me@you.com"], ["password_digest", "$2a$10$pUgNlUvWfMzF53kp2M6EkODj6Qx15rvsLgkIRwGEyM/sTFcoPOq2u"], ["created_at", "2015-11-11 19:57:13.602468"], ["updated_at", "2015-11-11 19:57:13.602468"], ["token", "191eaa623a858c3774928c24a32f0d2a"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (1.3ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'me@you.com' AND "users"."id" != 7) LIMIT 1
+Completed 201 Created in 132ms (Views: 4.4ms | ActiveRecord: 18.1ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-11 15:15:52 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-11 15:16:12 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"test@test8.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"test@test8.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test8.com' LIMIT 1
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "test@test8.com"], ["password_digest", "$2a$10$/0J9zDTZAHoJg6rw0pdYI.e/zX3zHXMLYIDyVvdAOAmGbiHVcxBM6"], ["created_at", "2015-11-11 20:16:12.726027"], ["updated_at", "2015-11-11 20:16:12.726027"], ["token", "cc8ed8e608e97485db360f6b77196941"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'test@test8.com' AND "users"."id" != 8) LIMIT 1[0m
+Completed 201 Created in 82ms (Views: 1.0ms | ActiveRecord: 4.3ms)

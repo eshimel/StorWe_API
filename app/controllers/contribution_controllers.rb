@@ -32,7 +32,7 @@ class ContributionController < UserController
 
   # PATCH contribution/1
   def update
-    if  contribution.update contribution_params)
+    if  contribution.update (contribution_params)
       head :no_content
     else
       render json: contribution.errors, status: :unprocessable_entity
