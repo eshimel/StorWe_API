@@ -1,7 +1,7 @@
 #Users receive clues from the previous user.
   #Users submit clues for the next user.
 
-class CluesController < UsersController
+class CluesController < ProtectedController
   before_action :set clue, only: [:update, :destroy]
 
   # GET clue
@@ -55,3 +55,4 @@ class CluesController < UsersController
 
   private :set clue,  clue_params
 end
+

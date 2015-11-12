@@ -1,49 +1,43 @@
 #
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+class UsersController < OpenReadController
+  skip_before_action :authenticate, only: [:login, :create]
 
-  # GET /users
+  def login
+    credentials = user_credentials
+    if (user = User.authenticate credentials[:email],
+                                 credentials[:password])
+      render json: user, serializer: UserLoginSerializer, root: 'user'
+    else
+      head :unauthorized
+    end
+  end
+
+  def create
+    user = User.create(user_credentials)
+    if user.valid?
+      render json: user, status: :created
+    else
+      head :bad_request
+    end
+  end
+
   def index
-    @users = User.all
-
-    render json: @users
+    render json: User.all
   end
 
-  # GET /users/1
   def show
-    if current_user == @user
-      render json: @user, serializer: CurrentUserSerializer, root: 'user'
-    else
-      render json: @user
-    end
+    user = User.find(params[:id])
+    render json: user
   end
 
-  # PATCH /users/1
   def update
-    if current_user == @user
-      if @user.update(user_params)
-        head :no_content
-      else
-        render json: @user.errors, status: :unprocessable_entity
-      end
-    else
-      head :unauthorized #you can't change a user that isn't you
-    end
+    head :bad_request
   end
 
-  # DELETE /users/1
-  def destroy
-    if current_user == @user
-      @user.destroy
-      head :no_content
-    else
-      head :unauthorized #you can't delete someone that isn't you
-    end
-  end
+  private
 
-  def set_user
-    @user = User.find(params[:id])
+  def user_credentials
+    params.require(:credentials)
+      .permit(:email, :password, :password_confirmation)
   end
-
-  private :set_user
 end

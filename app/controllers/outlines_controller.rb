@@ -1,7 +1,7 @@
 # Outlines are provided from the database upon login
 #Outlines change when new stories change
 #Outlines change every ten contributions
-class OutlinesController < ApplicationController
+class OutlinesController < ProtectedController
   before_action :set_outline, only: [:update, :destroy]
 
   # GET outlines
