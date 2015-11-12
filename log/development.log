@@ -2063,3 +2063,124 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:18:04.683711"], ["updated_at", "2015-11-12 16:18:04.683711"]]
+  [1m[36mOutline Load (0.2ms)[0m  [1mSELECT  "outlines".* FROM "outlines" WHERE "outlines"."id" = $1 LIMIT 1[0m  [["id", 1]]
+PG::UndefinedColumn: ERROR:  column "contributions_count" does not exist
+LINE 1: ...E "outlines" SET "contributions_count" = COALESCE("contribut...
+                                                             ^
+: UPDATE "outlines" SET "contributions_count" = COALESCE("contributions_count", 0) + 1 WHERE "outlines"."id" = $1
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:19:07.640496"], ["updated_at", "2015-11-12 16:19:07.640496"]]
+  [1m[36mOutline Load (0.4ms)[0m  [1mSELECT  "outlines".* FROM "outlines" WHERE "outlines"."id" = $1 LIMIT 1[0m  [["id", 1]]
+PG::UndefinedColumn: ERROR:  column "contributions_count" does not exist
+LINE 1: ...E "outlines" SET "contributions_count" = COALESCE("contribut...
+                                                             ^
+: UPDATE "outlines" SET "contributions_count" = COALESCE("contributions_count", 0) + 1 WHERE "outlines"."id" = $1
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contributions" ("submission", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["created_at", "2015-11-12 16:21:39.653832"], ["updated_at", "2015-11-12 16:21:39.653832"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:28:42.372907"], ["updated_at", "2015-11-12 16:28:42.372907"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "Mostly I just want to write a sample to see if I can pull up a story index."], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:28:42.381114"], ["updated_at", "2015-11-12 16:28:42.381114"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "This better work, and by the way, Earl changed his name because there were too many Smiths around."], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:28:42.383734"], ["updated_at", "2015-11-12 16:28:42.383734"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:29:40.929044"], ["updated_at", "2015-11-12 16:29:40.929044"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "Mostly I just want to write a sample to see if I can pull up a story index."], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:29:40.937963"], ["updated_at", "2015-11-12 16:29:40.937963"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "This better work, and by the way, Earl changed his name because there were too many Smiths around."], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:29:40.950251"], ["updated_at", "2015-11-12 16:29:40.950251"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "stories" ("contribution", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["contribution", "#<Contribution:0x007f8cc33ea308>"], ["created_at", "2015-11-12 16:29:40.965760"], ["updated_at", "2015-11-12 16:29:40.965760"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "stories" ("contribution", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["contribution", "#<Contribution:0x007f8cc384e930>"], ["created_at", "2015-11-12 16:29:40.969592"], ["updated_at", "2015-11-12 16:29:40.969592"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "stories" ("contribution", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["contribution", "#<Contribution:0x007f8cc3032828>"], ["created_at", "2015-11-12 16:29:40.971700"], ["updated_at", "2015-11-12 16:29:40.971700"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker"], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:38:34.787015"], ["updated_at", "2015-11-12 16:38:34.787015"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker"], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:43:27.569619"], ["updated_at", "2015-11-12 16:43:27.569619"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "Stop looking at me swan"], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:43:27.579724"], ["updated_at", "2015-11-12 16:43:27.579724"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker, western"], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:43:27.582706"], ["updated_at", "2015-11-12 16:43:27.582706"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "It was the best of times"], ["outline_id", 2], ["user_id", 4], ["created_at", "2015-11-12 16:43:27.585652"], ["updated_at", "2015-11-12 16:43:27.585652"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:43:27.597541"], ["updated_at", "2015-11-12 16:43:27.597541"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "Mostly I just want to write a sample to see if I can pull up a story index."], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:43:27.600967"], ["updated_at", "2015-11-12 16:43:27.600967"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "This better work, and by the way, Earl changed his name because there were too many Smiths around."], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:43:27.603561"], ["updated_at", "2015-11-12 16:43:27.603561"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "This better work, and by the way, rails documentation could be better."], ["outline_id", 2], ["user_id", 3], ["created_at", "2015-11-12 16:43:27.606095"], ["updated_at", "2015-11-12 16:43:27.606095"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker"], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:44:05.934975"], ["updated_at", "2015-11-12 16:44:05.934975"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "Stop looking at me swan"], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:44:05.943708"], ["updated_at", "2015-11-12 16:44:05.943708"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker, western"], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:44:05.946405"], ["updated_at", "2015-11-12 16:44:05.946405"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "It was the best of times"], ["outline_id", 2], ["user_id", 4], ["created_at", "2015-11-12 16:44:05.948841"], ["updated_at", "2015-11-12 16:44:05.948841"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:44:05.958901"], ["updated_at", "2015-11-12 16:44:05.958901"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "Mostly I just want to write a sample to see if I can pull up a story index."], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:44:05.961588"], ["updated_at", "2015-11-12 16:44:05.961588"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "This better work, and by the way, Earl changed his name because there were too many Smiths around."], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:44:05.963786"], ["updated_at", "2015-11-12 16:44:05.963786"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "This better work, and by the way, rails documentation could be better."], ["outline_id", 2], ["user_id", 3], ["created_at", "2015-11-12 16:44:05.965945"], ["updated_at", "2015-11-12 16:44:05.965945"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker"], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:45:03.188517"], ["updated_at", "2015-11-12 16:45:03.188517"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "Stop looking at me swan"], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:45:03.195674"], ["updated_at", "2015-11-12 16:45:03.195674"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["clue", "Good luck sucker, western"], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:45:03.198496"], ["updated_at", "2015-11-12 16:45:03.198496"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "clues" ("clue", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["clue", "It was the best of times"], ["outline_id", 2], ["user_id", 4], ["created_at", "2015-11-12 16:45:03.200883"], ["updated_at", "2015-11-12 16:45:03.200883"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "Earl was born Earl Smith, but no one knows why he changed his name. Maybe, he was bored."], ["outline_id", 1], ["user_id", 1], ["created_at", "2015-11-12 16:45:03.210306"], ["updated_at", "2015-11-12 16:45:03.210306"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "Mostly I just want to write a sample to see if I can pull up a story index."], ["outline_id", 1], ["user_id", 2], ["created_at", "2015-11-12 16:45:03.213131"], ["updated_at", "2015-11-12 16:45:03.213131"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["submission", "This better work, and by the way, Earl changed his name because there were too many Smiths around."], ["outline_id", 1], ["user_id", 3], ["created_at", "2015-11-12 16:45:03.215522"], ["updated_at", "2015-11-12 16:45:03.215522"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "contributions" ("submission", "outline_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["submission", "This better work, and by the way, rails documentation could be better."], ["outline_id", 2], ["user_id", 3], ["created_at", "2015-11-12 16:45:03.218004"], ["updated_at", "2015-11-12 16:45:03.218004"]]
+  [1m[35m (0.3ms)[0m  COMMIT
