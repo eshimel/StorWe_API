@@ -50,7 +50,7 @@ class CluesController < UsersController
   end
 
   def clue_params
-    params.require(:theme).permit(:setting, :subject)
+    params.require(:clue).permit(:user, :outline)
   end
 
   private :set clue,  clue_params

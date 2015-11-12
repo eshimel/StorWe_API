@@ -2,18 +2,19 @@
 # stories are compiled every ten contributions
 # the story in progress is visible after a contribution is submitted
 class StoriesController < ContributionsController
-  before_action :set_story, only: [:update, :destroy]
+  before_action :set_story, only: [:show, :update, :destroy]
 
   # GET /storys
   def index
-    @stories = story.all
+    @stories = Story.all
 
     render json: @stories
   end
 
   # GET /storys/1
   def show
-    @story = story.find(params[:id])
+
+    @story = Story.find(params[:id])
 
     render json: @story
   end
@@ -50,7 +51,7 @@ class StoriesController < ContributionsController
   end
 
   def story_params
-    params.require(:story).permit(:title, :isbn)
+    params.require(:contribution).permit(:clue, :outline)
   end
 
   private :set_story, :story_params
