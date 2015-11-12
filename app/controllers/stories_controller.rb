@@ -47,7 +47,7 @@ class StoriesController < ContributionsController
   end
 
   def set_story
-    @story = current_contribution.stories.find(params[:id])
+    @story = stories.find(params[:id])
   end
 
   def story_params

@@ -1,58 +1,53 @@
-#users make a contribution and submit it
-  #this reveals the current updates on the current story
-  #stories are made up of ten contributions
-class ContributionController < UserController
+# before_action :set_contribution, only: [:update, :destroy]
 
-  before_action :use contribution, only: [:update, :destroy]
-
-  # GET contribution
+  # GET /contributions
   def index
-    contribution = Contribution.all
+    @contributions = Contribution.all
 
-    render json: contribution
+    render json: @contributions
   end
 
-  # GET contribution/1
+  # GET /contributions/1
   def show
-    contribution = contribution.find(params[:id])
+    @contribution = Contribution.find(params[:id])
 
-    render json: contribution
+    render json: @contribution
   end
 
-  # POST contribution
+  # POST /contributions
   def create
-    contribution = current_user contribution.new. contribution_params) #makes this, this user' contribution.
+    @contribution = current_user.contrbution.new(contribution_params) #makes this, this user's contribution.
 
-    if contribution.save
-      render json: contribution, status: :created, location: contribution
+    if @contribution.save
+      render json: @contribution, status: :created, location: @contribution
     else
-      render json: contribution.errors, status: :unprocessable_entity
+      render json: @contribution.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH contribution/1
+  # PATCH /contributions/1
   def update
-    if  contribution.update (contribution_params)
+    if @contribution.update(contribution_params)
       head :no_content
     else
-      render json: contribution.errors, status: :unprocessable_entity
+      render json: @contribution.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE contribution/1
+  # DELETE /contributions/1
   def destroy
-    contribution.destroy
+    @contribution.destroy
 
     head :no_content
   end
 
   def set_contribution
-    contribution = current_user contribution.find(params[:id])
+    @contribution = current_user.contributions.find(params[:id])
   end
 
   def contribution_params
-    params.require(:contribution).permit(:submission, :outline_id, :user_id)
+    params.require(:contribution).permit(:submission)
   end
 
-  private :set contribution,  contribution_params
+  private :set_contribution, :contribution_params
 end

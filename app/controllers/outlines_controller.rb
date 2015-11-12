@@ -55,3 +55,4 @@ class OutlinesController < ApplicationController
 
   private :set_outline, :outline_params
 end
+
