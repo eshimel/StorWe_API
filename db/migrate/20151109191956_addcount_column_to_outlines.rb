@@ -7,3 +7,4 @@ class AddcountColumnToOutlines < ActiveRecord::Migration
     remove_column :outlines, :column_count
   end
 end
+

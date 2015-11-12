@@ -46,12 +46,12 @@ class ContributionController < UserController
     head :no_content
   end
 
-  def set contribution
+  def set_contribution
     contribution = current_user contribution.find(params[:id])
   end
 
   def contribution_params
-    params.require(:theme).permit(:setting, :subject)
+    params.require(:contribution).permit(:submission, :outline_id, :user_id)
   end
 
   private :set contribution,  contribution_params

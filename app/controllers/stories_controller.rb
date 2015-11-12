@@ -47,11 +47,11 @@ class StoriesController < ContributionsController
   end
 
   def set_story
-    @story = current_outline.stories.find(params[:id])
+    @story = current_contribution.stories.find(params[:id])
   end
 
   def story_params
-    params.require(:contribution).permit(:clue, :outline)
+    params.require(:story).permit(:clue, :contribution, :user, :outline)
   end
 
   private :set_story, :story_params
