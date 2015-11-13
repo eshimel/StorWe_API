@@ -6,8 +6,11 @@ class StoriesController < ProtectedController
 
   # GET /storys
   def index
-    @stories = Story.all
-
+   if(current_user)
+      @story = Story.all
+    else
+      @stories= current_user.stories
+    end
     render json: @stories
   end
 
@@ -21,7 +24,7 @@ class StoriesController < ProtectedController
 
   # POST /storys
   def create
-    @story = current_outline.stories.new(story_params) #makes this, this user's story.
+    @story = current_user.create_story(story_params) #makes this, this user's story.
 
     if @stories.save
       render json: @story, status: :created, location: @story
@@ -51,7 +54,7 @@ class StoriesController < ProtectedController
   end
 
   def story_params
-    params.require(:story).permit(:clue, :contribution, :user, :outline)
+    params.require(:contribution).permit(:clue, :user, :outline)
   end
 
   private :set_story, :story_params

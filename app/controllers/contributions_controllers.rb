@@ -1,5 +1,6 @@
-# before_action :set_contribution, only: [:update, :destroy]
 class ContributionsController < ProtectedController
+  skip before_action :set_contribution, only: [:update, :destroy]
+
   # GET /contributions
   def index
     @contributions = Contribution.all
@@ -16,9 +17,9 @@ class ContributionsController < ProtectedController
 
   # POST /contributions
   def create
-    @contribution = current_user.contrbution.new(contribution_params) #makes this, this user's contribution.
+    @contribution = current_user.create.contribution(contribution_params) #makes this, this user's contribution.
 
-    if (contribution.max) && @contribution.save
+    @contribution.save
       render json: @contribution, status: :created, location: @contribution
     else
       render json: @contribution.errors, status: :unprocessable_entity
@@ -46,8 +47,8 @@ class ContributionsController < ProtectedController
   end
 
   def contribution_params
-    params.require(:contribution).permit(:submission)
+    params.require(:contribution).permit(:submission, :user_id, :outline_id)
   end
 
-  private :set_contribution, :contribution_params
+
 end

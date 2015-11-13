@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #resrouces for clues
   resources :clues, except:[:new, :edit]
   #resources for contributions
-  resources :contribution, except:[:new, :edit]
+  resources :contributions
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
