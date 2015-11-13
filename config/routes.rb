@@ -1,22 +1,13 @@
 Rails.application.routes.draw do
   post '/register' => 'auth#register'
-  # patch '/confirm' => 'auth#confirm'
   post '/login' => 'auth#login'
   delete '/logout/:id' => 'auth#logout'
 
-  #resources for users
   resources :users, except: [:new, :edit]
-
-  #resource for outlines
   resources :outlines, except: [:new, :edit]
-
-  #resources for stories
   resources :stories, except:[:new, :edit]
-
-  #resrouces for clues
   resources :clues, except:[:new, :edit]
-  #resources for contributions
-  resources :contributions
+  resources :contributions, except:[:new, :edit]
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
