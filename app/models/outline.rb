@@ -1,5 +1,6 @@
 class Outline < ActiveRecord::Base
-belongs_to :outline
-
-belongs_to :user
+has_one :story
+has_many :users
+has_many :contributions
+has_many :clues
 end

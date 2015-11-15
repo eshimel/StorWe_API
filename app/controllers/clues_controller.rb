@@ -16,21 +16,21 @@ class CluesController < ProtectedController
 
   # GET clue/1
   def show
-    # clue = clue.find(params[:id])
+     clue = clue.find(params[:id])
 
-    render json: current_user.clue
-  end
+    #def show    # i.e. read *one* sale
+  #render json: Clue.find(params[:id])
+end
 
   # POST clue
   def create
-    clue = current_user.create_clue(clue_params) #makes this, this user' clue.
-
-    if clue.save
-      render json: clue, status: :created, location: clue
-    else
-      render json: clue.errors, status: :unprocessable_entity
-    end
+  clue = Clue.create(clue_params)
+  if clue.save
+    render json: clue # Send back the newly created Sale, as a JSON.
+  else
+    render json: clue.errors, status: :unprocessable_entity # Send back errors.
   end
+end
 
   # PATCH clue/1
   def update
@@ -50,11 +50,11 @@ class CluesController < ProtectedController
 
   private
   def set_clue
-    @clue = current_user.clue#.find(params[:id])
+    @clue = current_user.clue.find(params[:id])
   end
 
   def clue_params
-    params.require(:clue).permit(:user, :outline)
+    params.require(:clue).permit(:clue, :user_id, :outline_id)
   end
 
 

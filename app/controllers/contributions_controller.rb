@@ -1,5 +1,5 @@
 class ContributionsController < ProtectedController
-  skip_before_action :set_contribution, only: [:update, :destroy]
+  skip_before_action :set_contribution, only: [:update,:destroy]
 
   # GET /contributions
   def index
@@ -18,16 +18,14 @@ class ContributionsController < ProtectedController
   # POST /contributions
  # def create
    # @contribution = current_user.create.contribution(contribution_params) #makes this, this user's contribution.
-def create
-    contribution = Contribution.new(submission: current_user)
-    save game, :created
+  def create
+  contribution = Contribution.create(contribution_params)
+  if clue.save
+    render json: contribution # Send back the newly created Sale, as a JSON.
+  else
+    render json: contribition.errors, status: :unprocessable_entity # Send back errors.
   end
-   # if @contribution.save
-    #  render json: @contribution, status: :created
-    #else
-    #  render json: @contribution.errors, status: :unprocessable_entity
-    #end
-  #end
+end
 
   # PATCH /contributions/1
   def update
@@ -55,3 +53,4 @@ private
     params.require(:contribution).permit(:submission, :user_id, :outline_id)
   end
 end
+

@@ -1,8 +1,8 @@
 
 class ContributionSerializer < ActiveModel::Serializer
-  attributes :contribution, :outline_id, :user_id
+  attributes :submission, :outline_id, :current_user
   belongs_to :user
-  belongs_to :outline, :counter_cache => true
+  belongs_to :outline
 
   def
 

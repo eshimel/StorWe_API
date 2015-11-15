@@ -6898,3 +6898,1029 @@ NoMethodError (undefined method `attributes' for ClueSerializer:Class):
   Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
   Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
   Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (112.3ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 09:15:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:15:24 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (2.1ms)[0m  [1mUPDATE "users" SET "token" = '9c98492ee984286a8d1659312f4902b4', "updated_at" = '2015-11-13 14:15:24.647703' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 109ms (Views: 0.8ms | ActiveRecord: 7.0ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 09:15:24 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:15:24 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "9c98492ee984286a8d1659312f4902b4"]]
+  [1m[36mClue Load (0.6ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.4ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (54.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (123.4ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-13 09:15:53 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-13 09:15:53 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"t@t.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"t@t.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 't@t.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "t@t.com"], ["password_digest", "$2a$10$pdBmK5hB.B10yz91LaI7SurbShjbTDJs..wIPLvL4gc7NDXjFRu2K"], ["created_at", "2015-11-13 14:15:53.183592"], ["updated_at", "2015-11-13 14:15:53.183592"], ["token", "a9140d2994da66874c9b0eb4b1924a5b"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 't@t.com' AND "users"."id" != 27) LIMIT 1
+Completed 201 Created in 83ms (Views: 0.9ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:16:04 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"t@t.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"t@t.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "t@t.com"]]
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "token" = 'c3240961e536494c138d492551c304b4', "updated_at" = '2015-11-13 14:16:04.297241' WHERE "users"."id" = $1  [["id", 27]]
+Completed 200 OK in 68ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:16:04 -0500
+Processing by CluesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1[0m  [["token", "c3240961e536494c138d492551c304b4"]]
+  [1m[35mClue Load (0.3ms)[0m  SELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1  [["user_id", 27]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started OPTIONS "/contributions" for ::1 at 2015-11-13 09:17:01 -0500
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 09:17:01 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:19:28 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "token" = 'a512a99fdbcad12bad7ddee8198ca80e', "updated_at" = '2015-11-13 14:19:29.057770' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 101ms (Views: 0.4ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:19:29 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "a512a99fdbcad12bad7ddee8198ca80e"]]
+  [1m[36mClue Load (0.8ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 3.0ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (52.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (123.1ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:20:15 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (1.4ms)[0m  [1mUPDATE "users" SET "token" = 'ba3faa65b53356617187aeda3564aad4', "updated_at" = '2015-11-13 14:20:15.083900' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 80ms (Views: 0.4ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:20:15 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "ba3faa65b53356617187aeda3564aad4"]]
+  [1m[36mClue Load (0.2ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.9ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (58.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (111.9ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:20:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (1.5ms)[0m  [1mUPDATE "users" SET "token" = 'd8b5fee8cde64c0e2749d17a818f278b', "updated_at" = '2015-11-13 14:20:48.631933' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 97ms (Views: 0.4ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:20:48 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "d8b5fee8cde64c0e2749d17a818f278b"]]
+  [1m[36mClue Load (0.6ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.4ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (69.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (52.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (118.8ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 09:21:04 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.9ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:24:19 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "users" SET "token" = '1d4d0d460813d93349d354c95031ee9b', "updated_at" = '2015-11-13 14:24:20.073849' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 106ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:24:20 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "1d4d0d460813d93349d354c95031ee9b"]]
+  [1m[36mClue Load (0.5ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 2.3ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (52.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (117.9ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 09:27:28 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:27:28 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "token" = '5c918dca0dac1428bd7eeb9207515d9a', "updated_at" = '2015-11-13 14:27:28.757308' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 82ms (Views: 0.3ms | ActiveRecord: 4.1ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 09:27:28 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:27:28 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "5c918dca0dac1428bd7eeb9207515d9a"]]
+  [1m[36mClue Load (0.3ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.8ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (52.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (113.0ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:27:59 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "token" = '981a3cc3f48964f6cfa0a347fde9eaab', "updated_at" = '2015-11-13 14:28:00.405884' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 119ms (Views: 0.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:28:00 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "981a3cc3f48964f6cfa0a347fde9eaab"]]
+  [1m[36mClue Load (0.6ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 3.1ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (61.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (148.7ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:30:10 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "token" = 'c3b75175fce70dc8888e15b9139f363c', "updated_at" = '2015-11-13 14:30:10.798700' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 77ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:30:10 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "c3b75175fce70dc8888e15b9139f363c"]]
+  [1m[36mClue Load (0.3ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.0ms)
+
+NameError (undefined local variable or method `clues' for #<CluesController:0x007fee9eebfde0>):
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (66.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (108.2ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:30:51 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "users" SET "token" = '4b3c2d7a9a394abdc96135bfc0b91aa6', "updated_at" = '2015-11-13 14:30:51.723540' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 77ms (Views: 0.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:30:51 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "4b3c2d7a9a394abdc96135bfc0b91aa6"]]
+  [1m[36mClue Load (0.2ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.9ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (49.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (111.6ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:34:50 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "users" SET "token" = '42d02cdecc72f168a515276cd7d8f7f9', "updated_at" = '2015-11-13 14:34:50.791474' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 101ms (Views: 0.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:34:50 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "42d02cdecc72f168a515276cd7d8f7f9"]]
+  [1m[36mClue Load (0.4ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 11]]
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 2.0ms)
+
+NoMethodError (undefined method `attributes' for ClueSerializer:Class):
+  app/serializers/clue_serializer.rb:3:in `<class:ClueSerializer>'
+  app/serializers/clue_serializer.rb:2:in `<top (required)>'
+  app/controllers/clues_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (65.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (51.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (117.3ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 09:45:44 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:45:44 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "token" = 'e23b64a76b92da7eb0ae761ee70fc332', "updated_at" = '2015-11-13 14:45:44.257516' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 80ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 09:45:44 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:45:44 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (49.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (112.1ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:51:15 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "token" = '9256e6e51d4bd865c2fb3af1b7423930', "updated_at" = '2015-11-13 14:51:15.749390' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 67ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:51:15 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (50.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (118.6ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:51:24 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@me.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "me@me.com"]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "token" = '71e4923f144943c9be39d6fb0841c7e8', "updated_at" = '2015-11-13 14:51:24.189111' WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 68ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started OPTIONS "/clues/71e4923f144943c9be39d6fb0841c7e8" for ::1 at 2015-11-13 09:51:24 -0500
+
+
+Started GET "/clues/71e4923f144943c9be39d6fb0841c7e8" for ::1 at 2015-11-13 09:51:24 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (115.1ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-13 09:56:13 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-13 09:56:13 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"it@me", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"it@me", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'it@me' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'it@me' LIMIT 1[0m
+Completed 422 Unprocessable Entity in 93ms (Views: 2.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 09:57:19 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"me@v.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@v.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'me@v.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "me@v.com"], ["password_digest", "$2a$10$NiP0FObZxNHiFNG9/FQczu3dppPu8ppIYiokqO5JiJW/csE9qoJ7K"], ["created_at", "2015-11-13 14:57:19.310358"], ["updated_at", "2015-11-13 14:57:19.310358"], ["token", "97525a9e002fbd4d6da154e23383aa06"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'me@v.com' AND "users"."id" != 28) LIMIT 1
+Completed 201 Created in 72ms (Views: 0.7ms | ActiveRecord: 2.7ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 09:57:32 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:57:32 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"me@v.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"me@v.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "me@v.com"]]
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "token" = 'fd5ae9ef7eb450b9c90a6879b1fd10b2', "updated_at" = '2015-11-13 14:57:32.726772' WHERE "users"."id" = $1  [["id", 28]]
+Completed 200 OK in 66ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started OPTIONS "/clues/fd5ae9ef7eb450b9c90a6879b1fd10b2" for ::1 at 2015-11-13 09:57:32 -0500
+
+
+Started GET "/clues/fd5ae9ef7eb450b9c90a6879b1fd10b2" for ::1 at 2015-11-13 09:57:32 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (50.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (111.9ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 09:58:36 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"we@e.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"we@e.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'we@e.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "we@e.com"], ["password_digest", "$2a$10$jSJB68H7o6He7PO/sTuwSOqW0KeiicA.EBKWFErDi84roUjMuNj0u"], ["created_at", "2015-11-13 14:58:36.394099"], ["updated_at", "2015-11-13 14:58:36.394099"], ["token", "af06a62badb703b9e6390fbb71df2a15"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'we@e.com' AND "users"."id" != 29) LIMIT 1[0m
+Completed 201 Created in 70ms (Views: 0.5ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 09:58:46 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"we@e.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"we@e.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "we@e.com"]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "token" = '334f2cde5be5b4f9f554b7c10a18edf2', "updated_at" = '2015-11-13 14:58:46.040818' WHERE "users"."id" = $1[0m  [["id", 29]]
+Completed 200 OK in 68ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 09:58:46 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 09:58:46 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (57.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (128.8ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-13 12:44:18 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:44:18 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"i@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"i@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'i@3.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "i@3.com"], ["password_digest", "$2a$10$Icj1igaya5d70qw7UhlnMO9G.MNdQDHp5h9QTvwR.sVNxIryWAuiO"], ["created_at", "2015-11-13 17:44:18.252732"], ["updated_at", "2015-11-13 17:44:18.252732"], ["token", "7183653cd93c2b81b12a32c2bfae216f"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'i@3.com' AND "users"."id" != 30) LIMIT 1
+Completed 201 Created in 85ms (Views: 1.8ms | ActiveRecord: 5.5ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 12:44:30 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 12:44:30 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"i@3.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"i@3.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "i@3.com"]]
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "token" = '203685b303d97e83602c4e5413ed82eb', "updated_at" = '2015-11-13 17:44:30.361217' WHERE "users"."id" = $1  [["id", 30]]
+Completed 200 OK in 69ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 12:44:30 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 12:44:30 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (51.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (115.3ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:52:33 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@3.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "wdi@3.com"], ["password_digest", "$2a$10$2b4HNHydsEBK0DuMT3MyuOcdxtAYjtC246GkiPut/TBHCA1wQ1sKS"], ["created_at", "2015-11-13 17:52:33.751031"], ["updated_at", "2015-11-13 17:52:33.751031"], ["token", "32818b2fe00023dac19d8407588175bc"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'wdi@3.com' AND "users"."id" != 31) LIMIT 1[0m
+Completed 201 Created in 83ms (Views: 2.1ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:53:10 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@3.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@3.com' LIMIT 1[0m
+Completed 422 Unprocessable Entity in 76ms (Views: 4.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:53:24 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi@4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi@4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@4.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "wdi@4.com"], ["password_digest", "$2a$10$93jWzywIGEHV/OQBRgbg/uRF2ybP1JooFjdlO6vgBchgFiGR3.gdm"], ["created_at", "2015-11-13 17:53:25.038303"], ["updated_at", "2015-11-13 17:53:25.038303"], ["token", "c1347dbeb26070847b18abf7bfa50386"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'wdi@4.com' AND "users"."id" != 32) LIMIT 1
+Completed 201 Created in 71ms (Views: 0.7ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:53:31 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi@4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi@4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@4.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi@4.com' LIMIT 1
+Completed 422 Unprocessable Entity in 74ms (Views: 5.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:53:49 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi2@r.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi2@r.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'wdi2@r.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "wdi2@r.com"], ["password_digest", "$2a$10$RradV.lfq4Ac4BRlJ3/e/Ow6rdDd/8HNGbqzjay9.rP.beVVXjAgC"], ["created_at", "2015-11-13 17:53:49.075470"], ["updated_at", "2015-11-13 17:53:49.075470"], ["token", "885a8986951294b68ba955f77bc05a4a"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'wdi2@r.com' AND "users"."id" != 33) LIMIT 1[0m
+Completed 201 Created in 72ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 12:54:05 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"wdi2@r.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"wdi2@r.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "wdi2@r.com"]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "token" = '8562e402d7de5f5a4d4e7b7d833df55e', "updated_at" = '2015-11-13 17:54:05.530908' WHERE "users"."id" = $1[0m  [["id", 33]]
+Completed 200 OK in 69ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 12:54:05 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+    params.require(:clue).permit(:clue :user_id, :outline_id)
+                                        ^
+/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'):
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ':', expecting ')'
+  app/controllers/clues_controller.rb:57: syntax error, unexpected ')', expecting :: or '[' or '.'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (107.2ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-13 12:56:53 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-13 12:56:53 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"sugar", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"sugar", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'sugar' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "sugar"], ["password_digest", "$2a$10$zCVrUbBXxZ6S.sjaZXL5meFemYdWz/tjTB.6qQmr667C18dqBBiI2"], ["created_at", "2015-11-13 17:56:53.914734"], ["updated_at", "2015-11-13 17:56:53.914734"], ["token", "26bb06b1acfde02acb126e5a33487b08"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'sugar' AND "users"."id" != 34) LIMIT 1
+Completed 201 Created in 84ms (Views: 1.7ms | ActiveRecord: 4.8ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 12:57:01 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 12:57:01 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"sugar", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"sugar", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "sugar"]]
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "token" = '72be221c373ad9425e75f6cd6eb96a25', "updated_at" = '2015-11-13 17:57:01.375385' WHERE "users"."id" = $1  [["id", 34]]
+Completed 200 OK in 71ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 12:57:01 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 12:57:01 -0500
+Processing by CluesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1[0m  [["token", "72be221c373ad9425e75f6cd6eb96a25"]]
+  [1m[35mClue Load (0.3ms)[0m  SELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1  [["user_id", 34]]
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 1.4ms)
+
+
+Started OPTIONS "/contributions" for ::1 at 2015-11-13 12:57:15 -0500
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 12:57:15 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/contributions_controller.rb:57: syntax error, unexpected keyword_end, expecting end-of-input):
+  app/controllers/contributions_controller.rb:57: syntax error, unexpected keyword_end, expecting end-of-input
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.0ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 12:58:46 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/contributions_controller.rb:57: syntax error, unexpected keyword_end, expecting end-of-input):
+  app/controllers/contributions_controller.rb:57: syntax error, unexpected keyword_end, expecting end-of-input
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.7ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 12:59:50 -0500
+
+ActionController::RoutingError (undefined method `save' for nil:NilClass):
+  app/controllers/contributions_controller.rb:25:in `<class:ContributionsController>'
+  app/controllers/contributions_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (100.1ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 12:59:53 -0500
+
+ActionController::RoutingError (undefined method `save' for nil:NilClass):
+  app/controllers/contributions_controller.rb:25:in `<class:ContributionsController>'
+  app/controllers/contributions_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (91.4ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/register" for ::1 at 2015-11-13 13:00:10 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"4@3", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"4@3", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = '4@3' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = '4@3' LIMIT 1
+Completed 422 Unprocessable Entity in 84ms (Views: 3.0ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/register" for ::1 at 2015-11-13 13:00:26 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"4@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"4@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = '4@3.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "4@3.com"], ["password_digest", "$2a$10$f7IzNF.VGOjfeGTJ1SKQ0eVar7hFoOKuWxq/VEsJnV6xp14EvJNvu"], ["created_at", "2015-11-13 18:00:26.345120"], ["updated_at", "2015-11-13 18:00:26.345120"], ["token", "f94aa76c7d92f40049741e0dfdd29d49"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = '4@3.com' AND "users"."id" != 35) LIMIT 1[0m
+Completed 201 Created in 72ms (Views: 1.7ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/login" for ::1 at 2015-11-13 13:00:36 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"4@3.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"4@3.com", "password"=>"[FILTERED]"}}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "4@3.com"]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "token" = '16aa32e62e62d6ce58f515be95b8260d', "updated_at" = '2015-11-13 18:00:36.669045' WHERE "users"."id" = $1[0m  [["id", 35]]
+Completed 200 OK in 70ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/clues" for ::1 at 2015-11-13 13:00:36 -0500
+Processing by CluesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1  [["token", "16aa32e62e62d6ce58f515be95b8260d"]]
+  [1m[36mClue Load (0.2ms)[0m  [1mSELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1[0m  [["user_id", 35]]
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:00:43 -0500
+
+ActionController::RoutingError (undefined method `save' for nil:NilClass):
+  app/controllers/contributions_controller.rb:25:in `<class:ContributionsController>'
+  app/controllers/contributions_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.7ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:03:18 -0500
+
+SyntaxError (/Users/BuddySystem/Documents/WDI/eshimel/project_2/storwe_backend/StorWe_API/app/controllers/contributions_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/contributions_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/var/rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.2ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007fc9c40f6050 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc9c40f5bc8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc9c3e8ed30 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:03:53 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.5ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:05:46 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started OPTIONS "/contributions" for ::1 at 2015-11-13 13:07:20 -0500
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:07:21 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:07:26 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:07:28 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:08:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 16ms (Views: 6.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:09:21 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 13:12:38 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started OPTIONS "/register" for ::1 at 2015-11-13 14:16:20 -0500
+
+
+Started POST "/register" for ::1 at 2015-11-13 14:16:20 -0500
+Processing by AuthController#register as HTML
+  Parameters: {"credentials"=>{"email"=>"t@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"t@3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 't@3.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "t@3.com"], ["password_digest", "$2a$10$5wUqh9mcI0P13jhpR/uid.S7IbIInqjvBTNlVFjHV6l0kwV7c3rJW"], ["created_at", "2015-11-13 19:16:20.495769"], ["updated_at", "2015-11-13 19:16:20.495769"], ["token", "d6a6e461601aecc4f3de8e5c7285d53b"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 't@3.com' AND "users"."id" != 36) LIMIT 1
+Completed 201 Created in 130ms (Views: 2.6ms | ActiveRecord: 6.8ms)
+
+
+Started OPTIONS "/login" for ::1 at 2015-11-13 14:16:43 -0500
+
+
+Started POST "/login" for ::1 at 2015-11-13 14:16:43 -0500
+Processing by AuthController#login as HTML
+  Parameters: {"credentials"=>{"email"=>"t@3.com", "password"=>"[FILTERED]"}, "auth"=>{"credentials"=>{"email"=>"t@3.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "t@3.com"]]
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "token" = '743f16e4b9a1b06a7b292b9c0df3aff1', "updated_at" = '2015-11-13 19:16:43.349894' WHERE "users"."id" = $1  [["id", 36]]
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 1.1ms)
+
+
+Started OPTIONS "/clues" for ::1 at 2015-11-13 14:16:43 -0500
+
+
+Started GET "/clues" for ::1 at 2015-11-13 14:16:43 -0500
+Processing by CluesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT 1[0m  [["token", "743f16e4b9a1b06a7b292b9c0df3aff1"]]
+  [1m[35mClue Load (0.5ms)[0m  SELECT "clues".* FROM "clues" WHERE "clues"."user_id" = $1  [["user_id", 36]]
+Completed 200 OK in 23ms (Views: 2.3ms | ActiveRecord: 1.9ms)
+
+
+Started OPTIONS "/contributions" for ::1 at 2015-11-13 14:17:23 -0500
+
+
+Started POST "/contributions" for ::1 at 2015-11-13 14:17:23 -0500
+Processing by ContributionsController#create as HTML
+  Parameters: {"contribution"=>{}}
+  Rendered text template (0.0ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
