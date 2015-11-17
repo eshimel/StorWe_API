@@ -30,7 +30,10 @@ Deliverables: “A “read and write” text box that contributors can provide t
 As a contributor, I want to read the complete story, so I can know how it end. 
 Deliverables: A refresh button that reloads the  limited contributor generated story.
 
-Maybe: As a contributor, I want to be able to invite my friend to participate, so they can become contributors.
+I used the following template to make a paper prototype of my layout, to help me figure out my user stories.
+
+![copy of macbook screen with boxes](https://cloud.githubusercontent.com/assets/14185415/11225738/ea243fa8-8d49-11e5-9103-d29179d86273.jpg)
+
 
 Logic
 Stories
@@ -56,9 +59,9 @@ middle of one
 completes one
 
 
-e.
-Planning Images
+
 This project is udergoing some changes. please come back and check it out at a later time. Check out progress at http://eshimel.github.io/StorWe_Front_End/  
+or checkout the front-end repo https://github.com/eshimel/StorWe_Front_End.
 
 Notes about the USER authentication process
 # User authentication
