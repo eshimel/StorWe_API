@@ -56,9 +56,11 @@ middle of one
 completes one
 
 
-This project is not yet complete. please come back and check it out at a later time.
+e.
 Planning Images
+This project is udergoing some changes. please come back and check it out at a later time. Check out progress at http://eshimel.github.io/StorWe_Front_End/  
 
+Notes about the USER authentication process
 # User authentication
 
 ## Register
